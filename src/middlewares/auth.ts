@@ -15,10 +15,10 @@ export default async function authMiddleware(req: Request, res: Response, next: 
     console.log('Cookie: ', token)
 
     // Extracting the token
-    if ( req.headers.authorization && req.headers.authorization.split(" ")[0] === "Bearer" ) {
-      token = req.headers.authorization.split(" ")[1];
-    } else if (req.cookies && req.cookies.hanko) {
+    if (req.cookies && req.cookies.hanko ) {
       token = req.cookies.hanko;
+    } else if ( req.headers.authorization && req.headers.authorization.split(" ")[0] === "Bearer" ) {
+      token = req.headers.authorization.split(" ")[1];
     }
 
     if (token === null || (token && token.length === 0) ) {
