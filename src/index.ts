@@ -11,7 +11,7 @@ const app : Express = express()
 const isDev = app.settings.env === "development";
 const validURL = isDev
   ? "http://localhost:3000"
-  : "https://hanko-todo-fe.vercel.app/";
+  : "https://hanko-todo-fe.vercel.app";
 
 const corsOptions = {
     origin: validURL, // Specify the origin
