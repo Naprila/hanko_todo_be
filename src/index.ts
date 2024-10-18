@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import { v4 as uuidv4 } from 'uuid';
 import cors from "cors"
-import authMiddleware from "./middlewares/auth";
 
 const app : Express = express()
 
@@ -44,7 +43,7 @@ app.get("/todos", (req: Request, res: Response) => {
 })
 
 
-app.post('/todos/create', authMiddleware, (req: Request, res: Response) => {
+app.post('/todos/create', (req: Request, res: Response) => {
     const { text } = req.body;
 
     TODOS.push({
@@ -55,7 +54,7 @@ app.post('/todos/create', authMiddleware, (req: Request, res: Response) => {
     return
 })
 
-app.post('/todos/delete', authMiddleware, (req: Request, res: Response) => {
+app.post('/todos/delete', (req: Request, res: Response) => {
     const { todoId } = req.body
 
     const validTodo = TODOS.find((todo) => todo.id === todoId)

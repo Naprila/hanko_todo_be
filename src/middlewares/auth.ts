@@ -12,7 +12,7 @@ const JWKS = jose.createRemoteJWKSet(
 export default async function authMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
     let token = req.cookies.hanko
-    console.log('Cookie: ', token)
+    console.log('Cookie: ', token, typeof(token))
 
     // Extracting the token
     if (req.cookies && req.cookies.hanko ) {
@@ -39,7 +39,7 @@ export default async function authMiddleware(req: Request, res: Response, next: 
     }
     next()
   } catch (error) {
-    
+    console.log("Error:", error)
   }
   
 }
